@@ -1,12 +1,12 @@
 # Arrays and Hashing
 
-**what is an array?**
+- **what is an array?**
 
 > An array organizes items sequentially, one after another in memory. Each position in the array has an index, starting at 0.
 
 [Quick Reference](https://www.interviewcake.com/concept/python/array?)
 
-**what is a Hashtable and HashMap?**
+- **what is a Hashtable and HashMap?**
 
 > A Hashtable is a data structure that stores key-value pairs.It gives and option for easy lookup. A HashMap and a Hashtable are the same thing.But have a slight difference.
 
@@ -39,23 +39,53 @@ class Solution:
 
 > **Note:** The length of the strings must be same. Before we do any solution
 
-### My soulution
+### Solution 1
 
-> - I created to hashmaps initally and then added both the strings character to inividual hashmaps.
-> - Then I compared two hashmaps and if the values were equal the anagrams are same else they are different.
+> - Initally we chekc if the length of the two strings are same. If not we return false
+> - Then initialize the two hashmaps
+> - Next we count the occurance of the character in the sring and store in the hashmap
+> - Then we compare two hashmaps if both of them have the same count values for each character
+
+> **Note:** .get() mehtod is used so that the whenever there is no value present it alteast returns 0
 
 ```python
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        string1 = set()
-        string2 = set()
+        if len(s) != len(t):
+            return False
 
-        for i in s:
-            string1.add(i)
-        for j in t:
-            string2.add(j)
-            if j in string2 and string1:
-                return True
-            else:
+        countS , countT = {}, {}
+
+        for i in range(len(s)):
+            countS[s[i]] = 1 + countS.get(s[i],0)
+            countT[t[i]] = 1 + countT.get(t[i],0)
+
+        for j in countS:
+            if countS[j] != countT[j]:
                 return False
+        return True
 ```
+
+### Shortcut Solution
+
+> - Counter is a data structure in python which is a hashmap that counts
+> - we run two counters on both of the strings and then compare them both by using "" == ""
+
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+      return Counter(s) == Counter(t)
+```
+
+### Solution to reduce the Space Complexity to O(1)
+
+> - So In order to achive this we sort the strings then compare them then we will be using O(nlongn) for sorting and then O(1) or O(n) for space complexity
+
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+      return sorted(s) == sorted(t)
+```
+
+> - Sorted() is a built function on python which sorts the items
+> - So we sorte the two strings and compare them which will actually decrease the time complexity to O(nlogn) and space complexity to O(1)
