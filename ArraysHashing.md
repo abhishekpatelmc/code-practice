@@ -33,6 +33,26 @@ class Solution:
         return False
 ```
 
+> - I am initilizing a hashmap and then check if the element is present in the hashmap and if it is present then return true else add the element to the hashmap and return false
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function (nums) {
+  let hashmap = {};
+  for (let i = 0; i < nums.length; i++) {
+    if (hashmap[nums[i]]) {
+      return true;
+    } else {
+      hashmap[nums[i]] = "a";
+    }
+  }
+  return false;
+};
+```
+
 ## 242. Valid Anagram
 
 [Question](https://leetcode.com/problems/valid-anagram/)
