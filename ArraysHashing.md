@@ -2,7 +2,7 @@
 
 - **what is an array?**
 
-> An array organizes items sequentially, one after another in memory. Each position in the array has an index, starting at 0
+> An array organizes items sequentially, one after another in memory. Each position in the array has an index, starting at 0.
 
 [Quick Reference](https://www.interviewcake.com/concept/python/array?)
 
