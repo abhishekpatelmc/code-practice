@@ -3,9 +3,9 @@
 // there should be also a end case whihc will end the recurssion
 
 function countdown(i) {
-  if (i <= 0) return;
+  console.log(i);
+  if (i <= 1) return;
   else {
-    console.log(i);
     countdown(i - 1);
   }
 }
